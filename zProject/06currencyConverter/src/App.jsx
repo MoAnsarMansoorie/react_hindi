@@ -1,8 +1,7 @@
-
 import { useState } from 'react'
-import useCurrencyInfo from "./hooks/useCurrencyInfo"
-import  {InputBox}  from './components'
-import './App.css'
+import {InputBox} from './components'
+import useCurrencyInfo from './hooks/useCurrencyInfo'
+
 
 function App() {
 
@@ -21,7 +20,7 @@ function App() {
     setConvertedAmount(amount)
     setAmount(convertedAmount)
   }
-
+  
   const convert = () => {
     setConvertedAmount(amount * currencyInfo[to])
   }
@@ -39,6 +38,7 @@ function App() {
                     onSubmit={(e) => {
                         e.preventDefault();
                         convert()
+                       
                     }}
                 >
                     <div className="w-full mb-1">
@@ -48,6 +48,7 @@ function App() {
                             currencyOptions={options}
                             onCurrencyChange={(currency) => setAmount(amount)}
                             selectCurrency={from}
+                            onAmountChange={(amount) => setAmount(amount)}
                         />
                     </div>
                     <div className="relative w-full h-0.5">
@@ -62,11 +63,11 @@ function App() {
                     <div className="w-full mt-1 mb-4">
                         <InputBox
                             label="To"
-                            amount={amount}
+                            amount={convertedAmount}
                             currencyOptions={options}
                             onCurrencyChange={(currency) => setTo(currency)}
-                            selectCurrency={to}
-                            
+                            selectCurrency={from}
+                            amountDisable
                         />
                     </div>
                     <button type="submit" className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg">
