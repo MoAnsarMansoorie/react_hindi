@@ -4,14 +4,13 @@ function InputBox({
     label,
     amount,
     onAmountChange,
-    onCurrencyChange= "usd",
+    onCurrencyChange,
     currencyOptions = [],
-    selectCurrency,
+    selectCurrency="usd",
     amoutDisable = false,
     currencyDisable = false,
     className = "",
 }) {
-   
     const amoutInputId = useId()
 
     return (
@@ -28,7 +27,6 @@ function InputBox({
                     disabled={amoutDisable}
                     value={amount}
                     onChange={(e) => onAmountChange && onAmountChange(Number(e.target.value))}
-
                 />
             </div>
             <div className="w-1/2 flex flex-wrap justify-end text-right">
